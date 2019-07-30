@@ -119,9 +119,6 @@ func NewRequest(bufConn io.Reader) (*Request, error) {
 func (s *Server) handleRequest(req *Request, conn conn) error {
 	ctx := context.Background()
 
-	// Resolve the address if we have a FQDN
-	dest := req.DestAddr
-
 	// Apply any address rewrites
 	req.realDestAddr = req.DestAddr
 	if s.config.Rewriter != nil {
